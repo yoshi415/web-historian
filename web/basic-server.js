@@ -1,6 +1,10 @@
 var http = require("http");
+var fs = require('fs');
+var httpr = require("http-request");
 var handler = require("./request-handler");
 var initialize = require("./initialize.js");
+var archive = require('../helpers/archive-helpers');
+
 
 // Why do you think we have this here?
 // HINT: It has to do with what's in .gitignore
@@ -17,3 +21,18 @@ if (module.parent) {
   console.log("Listening on http://" + ip + ":" + port);
 }
 
+// fs.readFile('./public/index.html', function (err, html) {
+//   if(err) {
+//     throw err;
+//   }
+//   console.log(html);
+//   http.createServer(function(request, response) {
+//     response.writeHead(200, {"Content-Type" : "text/html"});
+//     response.write(html);
+//     response.end;
+//   }).listen(8080, ip);
+// });
+
+
+// http.createServer(function(request, response) {
+//   fs.readFile('./public/index.html', function (err, html) {
