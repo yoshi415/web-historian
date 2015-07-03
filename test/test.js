@@ -14,7 +14,7 @@ var request = supertest.agent(server);
 
 describe("server", function() {
   describe("GET /", function () {
-    xit("should return the content of index.html", function (done) {
+    it("should return the content of index.html", function (done) {
       // just assume that if it contains an <input> tag its index.html
       request
         .get('/')
@@ -74,7 +74,7 @@ describe("server", function() {
 
 describe("archive helpers", function(){
   describe("#readListOfUrls", function () {
-    xit("should read urls from sites.txt", function (done){
+    it("should read urls from sites.txt", function (done){
       var urlArray = ["example1.com", "example2.com"];
       fs.writeFileSync(archive.paths.list, urlArray.join("\n"));
 
@@ -86,7 +86,7 @@ describe("archive helpers", function(){
   });
 
   describe("#isUrlInList", function () {
-    xit("should check if a url is in the list", function (done) {
+    it("should check if a url is in the list", function (done) {
       var urlArray = ["example1.com", "example2.com"];
       fs.writeFileSync(archive.paths.list, urlArray.join("\n"));
 
@@ -106,7 +106,7 @@ describe("archive helpers", function(){
   });
 
   describe("#addUrlToList", function () {
-    xit("should add a url to the list", function (done) {
+    it("should add a url to the list", function (done) {
       var urlArray = ["example1.com", "example2.com\n"];
       fs.writeFileSync(archive.paths.list, urlArray.join("\n"));
 
@@ -120,7 +120,7 @@ describe("archive helpers", function(){
   });
 
   describe("#isUrlArchived", function () {
-    xit("should check if a url is archived", function (done) {
+    it("should check if a url is archived", function (done) {
       fs.writeFileSync(archive.paths.archivedSites + "/www.example.com", "blah blah");
 
       var counter = 0;
@@ -139,7 +139,7 @@ describe("archive helpers", function(){
   });
 
   describe("#downloadUrls", function () {
-    xit("should download all pending urls in the list", function (done) {
+    it("should download all pending urls in the list", function (done) {
       var urlArray = ["www.example.com", "www.google.com"];
       archive.downloadUrls(urlArray);
 
@@ -147,7 +147,7 @@ describe("archive helpers", function(){
       setTimeout(function () {
         expect(fs.readdirSync(archive.paths.archivedSites)).to.deep.equal(urlArray);
         done();
-      }, 25);
+      }, 250);
     });
   });
 });
